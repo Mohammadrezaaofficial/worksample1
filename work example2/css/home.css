@@ -1,0 +1,637 @@
+/*Header*/
+.main-header{
+    position: relative;
+    padding: 0 0;
+    /*background-image: url(https://p4.wallpaperbetter.com/wallpaper/124/774/349/foam-shoes-wallpaper-preview.jpg);*/
+    height: 600px;
+    margin-bottom: 200px;
+    background-size: cover;
+    background-position: unset;
+}
+.main-header .bg-video{
+    position: absolute;
+    z-index: -1;
+    right: 0;
+}
+.main-header .navbar{
+    width: 70%;
+    height: 60px;
+    max-width: 1200px;
+    margin: 0px auto;
+    padding: 0px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgba(34, 33, 33, 0.6);
+    border: 1px dashed orange;
+    border-radius: 20px;
+    
+}
+.navbar .links{
+    display: flex;
+    gap: 2em;
+}
+.navbar .links li{
+    list-style: none;
+}
+.navbar .links li a:hover{
+    text-decoration: underline;
+    background-color: orange;
+    border-radius: 20px;
+    padding: 5px 20px;
+    color: white;
+    transition: 1s ease;
+}
+.navbar a{
+    text-decoration: none;
+    color: white;
+    font-size: 1em;
+    font-weight: bold;
+}
+.navbar a:hover{
+    color: orange;
+}
+.navbar .login-btn{
+    background-color: orange;
+    color: white;
+    padding: 0.5em 1em;
+    border: none;
+    outline: none;
+    border-radius: 20px;
+    font-size: 0.8em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: scale 0.2 ease;
+}
+.navbar .login-btn:hover{
+    scale: 1.05;
+    color: #fff;
+}
+.navbar .login-btn:active{
+    scale: 0.95;
+}
+.navbar .toggle-btn{
+    color: #fff;
+    font-size: 1.5em;
+    cursor: pointer;
+    display: none;
+}
+.navbar .logo a{
+    font-size: 1.5em;
+    font-weight: bold;
+}
+.navbar .logo a:hover{
+    text-decoration: underline;
+    background-color: orange;
+    border-radius: 20px;
+    padding: 5px 20px;
+    color: white;
+    transition: 1s ease;
+}
+/*Dropdown menu*/
+.dropdown-menu{
+    display: none;
+    position: absolute;
+    right: 2em;
+    top: 60px;
+    width: 300px;
+    height: 0;
+    background: rgba(34, 33, 33, 0.6);
+    backdrop-filter: blur(15px);
+    border-radius: 10px;
+    overflow: hidden;  
+    transition: height 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);  
+}
+.dropdown-menu.open{
+    height: 240px;
+}
+.dropdown-menu a{
+    text-decoration: none;
+    color: white;
+    font-size: 1em;
+}
+.dropdown-menu a:hover{
+    text-decoration: underline;
+    background-color: orange;
+    border-radius: 20px;
+    padding: 5px 20px;
+    color: white;
+    transition: 1s ease;
+}
+.dropdown-menu .login-btn{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: orange;
+    color: white;
+    padding: 0.5em 1em;
+    border: none;
+    outline: none;
+    border-radius: 20px;
+    font-size: 0.8em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: scale 0.2 ease;
+}
+.dropdown-menu .login-btn:hover{
+    scale: 1.05;
+    color: #fff;
+}
+.dropdown-menu .login-btn:active{
+    scale: 0.95;
+}
+.dropdown-menu li{
+    padding: 0.7em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+/*responsive design for header*/
+@media(max-width: 992px){
+    .navbar .links,
+    .navbar .login-btn{
+        display: none
+    }
+    .navbar .toggle-btn{
+        display: block;
+    }
+    .dropdown-menu{
+        display: block;
+    }   
+}
+@media(max-width: 576px){
+    .dropdown-menu{
+        left: 2em;
+        width: unset;
+    }
+}
+@media(min-aspect-ratio: 16/9){
+    .bg-video{
+        width: 100%;
+        height: auto;
+    }
+}
+@media(max-aspect-ratio: 16/9){
+    .bg-video{
+        width: auto;
+        height: 100%;
+    }
+}
+/*%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%*/
+/*Pop login*/
+.popup-login{
+    display: flex;
+    background: rgba(0, 0, 0, 0.6);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0%;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+.popup-content{
+    height: 450px;
+    width: 380px;
+    background: black;
+    padding: 20px;
+    border-radius: 5px;
+    position: relative;
+    overflow: hidden;
+}
+.popup-content::before{
+    content: '';
+    position: absolute;
+    top: -200px;
+    right: 200px;
+    width: 380px;
+    height: 420px;
+    border-radius: 5px;
+    background: linear-gradient(3deg, orange,
+     orange);
+    transform-origin: bottom right;
+    animation: animate 6s linear infinite;
+}
+.popup-content::after{
+    content: '';
+    position: absolute;
+    top: -210px;
+    right: 210px;
+    width: 380px;
+    height: 420px;
+    border-radius: 5px;
+    background: linear-gradient(3deg, orange,
+     orange);
+    transform-origin: bottom right;
+    animation: animate 6s linear infinite;
+    animation-delay: -3s;
+}
+.popup-content .form{
+    position: absolute;
+    inset: 2px;
+    border-radius: 20px;
+    background: #333;
+    z-index: 10;
+    padding: 50px 40px;
+    display: flex;
+    flex-direction: column;
+}
+.popup-content .form h2{
+    color: orange;
+    font-weight: bold;
+    text-align: center;
+}
+.popup-content .form .input-box{
+    position: relative;
+    width: 300px;
+    margin-top: 35px;
+}
+.popup-content .form .input-box input{
+    position: relative;
+    width: 100%;
+    padding: 20px 10px 10px;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #333;
+    font-size: 1em;
+    z-index: 10;
+}
+.popup-content .form .input-box span{
+    position: absolute;
+    right: 0;
+    padding: 20px 10px 10px;
+    font-size: 1.2em;
+    color: #777;
+    pointer-events: none;
+    transition: 1s;
+}
+.popup-content .form .input-box input:valid ~ span,
+.popup-content .form .input-box input:focus ~ span{
+    color: orange;
+    transform: translateX(-10px) translateY(-25px);
+    font-size: 0.90em;
+}
+.popup-content .form .input-box i{
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+    width: 100%;
+    height: 2px;
+    background: orange;
+    border-radius: 10px;
+    transition: 1s;
+    pointer-events: none;
+    z-index: 9;
+}
+.popup-content .form .input-box input:valid ~ i,
+.popup-content .form .input-box input:focus ~ i{
+    height: 35px;
+}
+.popup-content .form .links{
+    display: flex;
+    justify-content: space-between;
+    
+}
+.popup-content .form .links a{
+    text-decoration: none;
+    margin: 10px 0;
+    font-size: 1em;
+    color: white;
+}
+.popup-content .form .links a:hover,
+.popup-content .form .links a:nth-child(2){
+    color: orange;
+}
+.popup-content .form input[type='submit']{
+    border: none;
+    outline: none;
+    font-weight: bold;
+    background: orange;
+    padding: 11px 25px;
+    width: 100px;
+    margin-top: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.popup-content .form input[type='submit']:active{
+    opacity: 0.8;
+}
+.popup-content .close-btn{
+    position: absolute;
+    height: 10px;
+    width: 10px;
+    top: 0px;
+    right: 0px;
+    color: white;
+    cursor: pointer;
+    z-index: 11;
+}
+@keyframes animate{
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
+
+/*%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%*/
+/* Products*/
+.slider{
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    align-items: center;
+}
+.products span{
+    margin-right: 30px;
+    text-decoration: none;
+    font-size: 2em;
+    font-weight: bold;
+    display: inline;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    cursor: alias;
+}
+.products span:hover{
+    text-decoration: underline;
+    background-color: orange;
+    border-radius: 20px;
+    padding: 5px 20px;
+    color: white;
+    transition: 1s ease;
+}
+.container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.container .card{
+    height: 400px;
+    margin: 20px;
+    box-shadow: 5px 5px 30px orange;
+    border-radius: 20px;
+    overflow: hidden;
+}
+.container .card:hover{
+    cursor: pointer;
+}
+.container .card img{
+    width: 290px;
+    height: 400px;
+}
+.container .card .introduce{
+    height: 70px;
+    width: 290px;
+    box-sizing: border-box;
+    position: absolute;
+    bottom: -787px;
+    background: rgba(27, 27, 27, 0.5);
+    color: #fff;
+    border-radius: 20px;
+}
+.container .card .introduce h1{
+    margin: 10px;
+    font-size: 2.5em;
+}
+.container .card .introduce p{
+    font-size: 1.2em;
+    margin: 20px;
+    visibility: hidden;
+    opacity: 0;
+}
+.container .card:hover .introduce{
+    height: 220px;
+    bottom: -787px;
+    background: rgba(0, 0, 0, 0.6);
+    transition: 1s;
+    
+}
+.container .card .introduce p span{
+    font-weight: bold;
+}
+.container .card:hover p{
+    opacity: 1;
+    visibility: visible;
+}
+.container .card:hover img{
+    transform: scale(1.1) rotate(-3deg);
+    transition: 1s;
+}
+/* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%*/
+/* About us */
+.about{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.content{
+    width: 1280px;
+    max-width: 95%;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
+.about .content .text{
+    position: relative;
+    width: 550px;
+    max-width: 100%;
+    padding: 0 10px;
+    margin: 20px 0;
+}
+.about .content .text h1{
+    position: relative;
+    margin-right: 30px;
+    top: -30px;
+    text-decoration: none;
+    font-size: 2em;
+    font-weight: bold;
+    display: inline;
+    justify-content: right;
+    align-items: right;
+    color: #fff;
+    cursor: alias;
+}
+.about .content .text h1:hover{
+    text-decoration: underline;
+    background-color: orange;
+    border-radius: 20px;
+    padding: 5px 20px;
+    color: white;
+    transition: 1s ease;
+}
+.about .content .text h5{
+    position: relative;
+    top: 20px;
+    right: 20px;
+    display: block;
+    font-size: 1.3em;
+    margin-bottom: 0.5em;
+    font-weight: bold;
+    transition: 1s;
+    color: #fff;
+    text-align: right;
+    justify-content: right;
+}
+.about .content .text h5:hover{
+    -webkit-text-stroke: 2px orange;
+    color: transparent;
+}
+.about .content .text p{
+    position: relative;
+    display: block;
+    top: 40px;
+    font-size: 1em;
+    border-right: 0px;
+    margin-right: 20px;
+    text-align: right;
+    justify-content: right;
+    color: #fff;
+    transition: 1s;
+}
+.about .content .text p:hover{
+    -webkit-text-stroke: 1px orange;
+    color: transparent;
+}
+.about .content .text button{
+    position: relative;
+    background-color: orange;
+    color: black;
+    top: 100px;
+    right: 40px;
+    font-size: 1.1em;
+    padding: 10px 10px;
+    width: 125px;
+    height: 40px;
+    border: none;
+    border-radius: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: scale 0.2 ease;
+}
+.about .content .text button:hover{
+    scale: 1.05;
+    color: black;
+}
+.about .content img{
+    height: auto;
+    width: 600px;
+    max-width: 100%;
+}
+/*%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%*/
+/*footer*/
+footer{
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    min-height: 100vh;
+}
+.footer{
+    position: relative;
+    width: 100%;
+    background: rgb(255, 196, 0);
+    min-height: 100px;
+    padding: 20px 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}   
+.footer .social-icon,
+.footer .footer-menu{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 0px;
+    flex-wrap: wrap;
+}
+.footer .social-icon li,
+.footer .footer-menu li{
+    list-style: none;
+}
+.footer .social-icon li a{
+    font-size: 2em;
+    color: white;
+    margin: 0 10px;
+    display: inline-block;
+    transition: 1s;
+}
+.footer .social-icon li a:hover{
+    transform: translateY(-10px);
+}
+.footer .footer-menu li a{
+    font-size: 1.2em;
+    text-decoration: none;
+    color: white;
+    margin: 0 10px;
+    display: inline-block;
+    transition: 1s;    
+    opacity: 0.5;
+}
+.footer .footer-menu li a:hover{
+    opacity: 1;
+}
+.footer p{
+    color: #fff;
+    text-align: center;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    font-size: 0.75em;
+}
+.footer .wave{
+    position: absolute;
+    top: -100px;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background: url(wave.png);
+    background-size: 1000px 100px;
+}
+.footer .wave#wave1{
+    z-index: 1000;
+    opacity: 1;
+    bottom: 0;
+    animation: animatewave 4s linear infinite;
+}
+.footer .wave#wave2{
+    z-index: 999;
+    opacity: 0.5;
+    bottom: 10px;
+    animation: animatewave-2 3s linear infinite;
+}
+.footer .wave#wave3{
+    z-index: 1000;
+    opacity: 0.2;
+    bottom: 15px;
+    animation: animatewave 3s linear infinite;
+}
+.footer .wave#wave4{
+    z-index: 1000;
+    opacity: 0.7;
+    bottom: 20px;
+    animation: animatewave 4s linear infinite;
+}
+@keyframes animatewave{
+    0%{
+        background-position-x: 1000px;
+    }
+    100%{
+        background-position-x: 0px;
+    }
+}
+@keyframes animatewave-2{
+    0%{
+        background-position-x: 0px;
+    }
+    100%{
+        background-position-x: 1000px;
+    }
+}

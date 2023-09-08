@@ -1,0 +1,16 @@
+*{
+    direction: rtl;
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+body{
+    height: 100vh;
+    background-color: #161922;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    font-size: 16px;
+    margin: 0px;
+}
